@@ -7,6 +7,8 @@ def add_new_word():
     synonyms = input('Enter its synonyms:\n').lower()
     word_type = input('Enter its type:\n').lower()
 
+    timestamp = int(datetime.datetime.now().timestamp())
+
     if new_word in data:
         print(f"The word '{new_word}' has existed")
         return
@@ -18,7 +20,8 @@ def add_new_word():
         data[new_word]={
             "meaning":meaning,
             "synonyms":synonyms_list,
-            "type":word_type
+            "type":word_type,
+            "add_time":timestamp
         }
         json.dump(data, f)
 
@@ -122,7 +125,7 @@ if __name__ == "__main__":
         data = json.load(f)
     while True:
         command = input('Enter a command: ').lower()
-        if command == 'addword':
+        if command == 'new':
             add_new_word()
         elif command == 'check':
             check_word()
