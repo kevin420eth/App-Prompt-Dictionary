@@ -1,4 +1,4 @@
-import json, random
+import json, random, datetime
 
 # Add a new word
 def add_new_word():
@@ -110,9 +110,15 @@ def random_word():
         if user_input != '':
             break
 
+#Backup the current dictionary
+def backup():
+    time = datetime.datetime.now().strftime("%Y%m%d-%H:%M:%S")
+    with open(f'./backup/{time}.json','w', encoding='utf-8') as f:
+        json.dump(data, f)
+
+
 if __name__ == "__main__":
     # Read the dictionary
     with open('./data/data.json','r') as f:
         data = json.load(f)
-    
-    add_new_word()
+        
