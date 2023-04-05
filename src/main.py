@@ -120,4 +120,27 @@ if __name__ == "__main__":
     # Read the dictionary
     with open('./data/data.json','r') as f:
         data = json.load(f)
+    while True:
+        command = input('Enter a command: ').lower()
+        if command == 'addword':
+            add_new_word()
+        elif command == 'check':
+            check_word()
+        elif command == 'random':
+            random_word()
+        elif command == 'addprop':
+            add_property()
+        elif command == 'delprop':
+            delete_property()
+        elif command == 'modprop':
+            modify_property_value()
+        elif command == 'addsyn':
+            add_new_synonyms()
+        elif command == 'backup':
+            backup()
+        else:
+            print("The command doesn't exist")
+        _continue = input('Enter anything to exist: ').lower()
+        if _continue != '':
+            break
 
