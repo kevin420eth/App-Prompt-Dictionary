@@ -144,10 +144,9 @@ if __name__ == "__main__":
             add_new_synonyms()
         elif command == 'backup':
             backup()
+        elif command == 'exit':
+            break
         else:
             print("The command doesn't exist")
-        
-        # _continue = input('Enter anything to exist: ').lower()
-        # if _continue != '':
-        #     break
+
 
