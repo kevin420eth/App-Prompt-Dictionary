@@ -140,6 +140,7 @@ if __name__ == "__main__":
             backup()
         else:
             print("The command doesn't exist")
+        
         _continue = input('Enter anything to exist: ').lower()
         if _continue != '':
             break
