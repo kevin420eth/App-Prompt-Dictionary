@@ -1,1 +1,9 @@
-{"yondu": {"meaning": "", "synonyms": [], "type": "aaa"}}
+{
+    "test": {
+        "meaning": "this is a test",
+        "synonyms": [
+            "test"
+        ],
+        "type": "test"
+    }
+}

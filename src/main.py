@@ -1,9 +1,5 @@
 import json, random
 
-# Read the dictionary
-with open('./data/data.json','r') as f:
-    data = json.load(f)
-
 # Add a new word
 def add_a_new_word():
     new_word = input('Enter a vocabulary:\n').lower()
@@ -11,7 +7,7 @@ def add_a_new_word():
     synonyms = input('Enter its synonyms:\n').lower()
     word_type = input('Enter its type:\n').lower()
 
-    with open('data.json', 'w', encoding='utf-8') as f:
+    with open('./data/data.json', 'w', encoding='utf-8') as f:
         synonyms_list = []
         if synonyms != '':
             synonyms_list.append(synonyms)
@@ -35,7 +31,7 @@ def add_property():
                 print("This property has existed")
                 return
             data[_][target_property]=""
-    with open('data.json', 'w', encoding='utf-8') as f:
+    with open('./data/data.json', 'w', encoding='utf-8') as f:
         json.dump(data, f)
 
 # Delete a property from all words
@@ -53,7 +49,7 @@ def delete_property():
             print(error)
             return
             
-    with open('data.json', 'w', encoding='utf-8') as f:
+    with open('./data/data.json', 'w', encoding='utf-8') as f:
         json.dump(data, f)
 
     print(f"Property: {target_property} has been deleted")
@@ -69,7 +65,7 @@ def modify_property_value():
         return
     else:
         data[target_word][target_property] = property_value
-        with open('data.json', 'w', encoding='utf-8') as f:
+        with open('./data/data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f)
         print(f'The {target_property} of {target_word} has been changed')
 
@@ -84,7 +80,7 @@ def add_a_new_synonyms():
     else:
         for _ in new_synonyms:
             data[target_word]['synonyms'].append(_)
-        with open('data.json', 'w', encoding='utf-8') as f:
+        with open('./data/data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f)
     print(f'New synonymses have been added')
 
@@ -111,4 +107,9 @@ def random_word():
         if user_input != '':
             break
 
-add_property()
+if __name__ == "__main__":
+    # Read the dictionary
+    with open('./data/data.json','r') as f:
+        data = json.load(f)
+    
+    add_a_new_word()
