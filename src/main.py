@@ -116,9 +116,8 @@ def backup():
     with open(f'./backup/{time}.json','w', encoding='utf-8') as f:
         json.dump(data, f)
 
-
 if __name__ == "__main__":
     # Read the dictionary
     with open('./data/data.json','r') as f:
         data = json.load(f)
-        
+
