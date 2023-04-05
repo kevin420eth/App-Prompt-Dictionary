@@ -12,7 +12,7 @@ def add_new_word():
     if new_word in data:
         print(f"The word '{new_word}' has existed")
         return
-    with open(f'{base}/data/data.json', 'w', encoding='utf-8') as f:
+    with open(f'{root}/data/data.json', 'w', encoding='utf-8') as f:
         synonyms_list = []
         if synonyms != '':
             synonyms_list.append(synonyms)
@@ -37,7 +37,7 @@ def add_property():
                 print("This property has existed")
                 return
             data[_][target_property]=""
-    with open(f'{base}/data/data.json', 'w', encoding='utf-8') as f:
+    with open(f'{root}/data/data.json', 'w', encoding='utf-8') as f:
         json.dump(data, f)
 
 # Delete a property from all words
@@ -55,7 +55,7 @@ def delete_property():
             print(error)
             return
             
-    with open(f'{base}/data/data.json', 'w', encoding='utf-8') as f:
+    with open(f'{root}/data/data.json', 'w', encoding='utf-8') as f:
         json.dump(data, f)
 
     print(f"Property: {target_property} has been deleted")
@@ -71,7 +71,7 @@ def modify_property_value():
         return
     else:
         data[target_word][target_property] = property_value
-        with open(f'{base}/data/data.json', 'w', encoding='utf-8') as f:
+        with open(f'{root}/data/data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f)
         print(f'The {target_property} of {target_word} has been changed')
 
@@ -86,7 +86,7 @@ def add_new_synonyms():
     else:
         for _ in new_synonyms:
             data[target_word]['synonyms'].append(_)
-        with open(f'{base}/data/data.json', 'w', encoding='utf-8') as f:
+        with open(f'{root}/data/data.json', 'w', encoding='utf-8') as f:
             json.dump(data, f)
     print(f'New synonymses have been added')
 
@@ -116,14 +116,15 @@ def random_word():
 #Backup the current dictionary
 def backup():
     time = datetime.datetime.now().strftime("%Y%m%d-%H:%M:%S")
-    with open(f'{base}/backup/{time}.json','w', encoding='utf-8') as f:
+    with open(f'{root}/backup/{time}.json','w', encoding='utf-8') as f:
         json.dump(data, f)
 
 if __name__ == "__main__":
     # Read the dictionary
     base = os.path.dirname(__file__)
+    root = os.path.abspath(os.path.join(base, os.pardir))
 
-    with open(f'{base}/data/data.json','r') as f:
+    with open(f'{root}/data/data.json','r') as f:
         data = json.load(f)
     while True:
         command = input('Enter a command: ').lower()
