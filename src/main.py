@@ -1,12 +1,15 @@
 import json, random
 
 # Add a new word
-def add_a_new_word():
+def add_new_word():
     new_word = input('Enter a vocabulary:\n').lower()
     meaning = input('Enter its meaning:\n').lower()
     synonyms = input('Enter its synonyms:\n').lower()
     word_type = input('Enter its type:\n').lower()
 
+    if new_word in data:
+        print(f"The word '{new_word}' has existed")
+        return
     with open('./data/data.json', 'w', encoding='utf-8') as f:
         synonyms_list = []
         if synonyms != '':
@@ -70,7 +73,7 @@ def modify_property_value():
         print(f'The {target_property} of {target_word} has been changed')
 
 # Add a new synoyms
-def add_a_new_synonyms():
+def add_new_synonyms():
     target_word = input('Enter the word you want to modify:\n').lower()
     new_synonyms = input('Enter the value you want to add:\n').lower()
     new_synonyms = new_synonyms.replace(' ','').split(',')
@@ -112,4 +115,4 @@ if __name__ == "__main__":
     with open('./data/data.json','r') as f:
         data = json.load(f)
     
-    add_a_new_word()
+    add_new_word()
