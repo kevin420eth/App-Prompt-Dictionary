@@ -76,4 +76,6 @@ def check_word():
     except Exception as error:
         print(error)
 
-check_word()
+def random_word():
+    while True:
+        pass
