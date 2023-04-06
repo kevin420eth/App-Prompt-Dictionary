@@ -8,7 +8,6 @@ def add_new_word():
         return
     meaning = input('\nEnter its meaning: ').lower()
     synonyms = input('\nEnter its synonyms: ').lower()
-    word_type = input('\nEnter its type: ').lower()
 
     timestamp = int(datetime.datetime.now().timestamp())
 
@@ -20,7 +19,6 @@ def add_new_word():
         data[new_word]={
             "meaning":meaning,
             "synonyms":synonyms_list,
-            "type":word_type,
             "add_time":timestamp
         }
         json.dump(data, f)
@@ -42,14 +40,14 @@ def add_property():
 
 # Delete a property from all words
 def delete_property():
-    target_property = input('Enter the property you want to delete:\n').lower()
+    target_property = input('\nEnter the property you want to delete: ').lower()
     if target_property == '':
             return
     for _ in data:
         try:
             del data[_][target_property]
         except KeyError:
-            print("There's no this property")
+            print("\nThere's no this property")
             return
         except Exception as error:
             print(error)
@@ -58,7 +56,7 @@ def delete_property():
     with open(f'{root}/data/data.json', 'w', encoding='utf-8') as f:
         json.dump(data, f)
 
-    print(f"Property: {target_property} has been deleted")
+    print(f"\nProperty: {target_property} has been deleted")
 
 # Modify the value of the property of a specific word
 def modify_property_value():
