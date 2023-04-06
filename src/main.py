@@ -2,13 +2,13 @@ import os, json, random, datetime
 
 # Add a new word
 def add_new_word():
-    new_word = input('Enter a vocabulary:\n').lower()
+    new_word = input('\nEnter a vocabulary: ').lower()
     if new_word in data:
         print(f"The word '{new_word}' has existed")
         return
-    meaning = input('Enter its meaning:\n').lower()
-    synonyms = input('Enter its synonyms:\n').lower()
-    word_type = input('Enter its type:\n').lower()
+    meaning = input('\nEnter its meaning: ').lower()
+    synonyms = input('\nEnter its synonyms: ').lower()
+    word_type = input('\nEnter its type: ').lower()
 
     timestamp = int(datetime.datetime.now().timestamp())
 
@@ -116,8 +116,13 @@ def random_word():
 #Backup the current dictionary
 def backup():
     time = datetime.datetime.now().strftime("%Y%m%d-%H:%M:%S")
-    with open(f'{root}/backup/{time}.json','w', encoding='utf-8') as f:
-        json.dump(data, f)
+    try:
+        with open(f'{root}/backup/{time}.json','w', encoding='utf-8') as f:
+            json.dump(data, f)
+    except Exception as error:
+        print('\nSomething went wrong...')
+    else:
+        print('\nBackup is completed')
 
 if __name__ == "__main__":
     # Read the dictionary
@@ -127,7 +132,8 @@ if __name__ == "__main__":
     with open(f'{root}/data/data.json','r') as f:
         data = json.load(f)
     while True:
-        command = input('Enter a command: ').lower()
+        print(f'\n-----------------------------------')
+        command = input('\nEnter a command: ').lower()
         if command == 'new':
             add_new_word()
         elif command == 'check':
@@ -147,6 +153,6 @@ if __name__ == "__main__":
         elif command == 'exit':
             break
         else:
-            print("The command doesn't exist")
+            print("\nThe command doesn't exist")
 
 
