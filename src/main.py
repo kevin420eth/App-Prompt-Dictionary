@@ -101,12 +101,16 @@ def check_word():
 
 # Review words randomly
 def random_word():
+    purged_data = data
+    for _ in purged_data:
+        del purged_data[_]['add_time']
+        
     while True:
-        key = random.choice(list(data))
+        key = random.choice(list(purged_data))
         print(f'\n{key}')
         user_input = input('').lower()
-        for _ in data[key]:
-            print(f'{_}: {data[key][_]}\n')
+        for _ in purged_data[key]:
+            print(f'{_}: {purged_data[key][_]}\n')
         user_input = input(f'-----------------------------------').lower()
         if user_input != '':
             break
