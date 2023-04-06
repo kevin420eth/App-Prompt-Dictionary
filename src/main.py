@@ -115,7 +115,7 @@ def random_word():
 
 #Backup the current dictionary
 def backup():
-    time = datetime.datetime.now().strftime("%Y%m%d-%H:%M:%S")
+    time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     try:
         with open(f'{root}/backup/{time}.json','w', encoding='utf-8') as f:
             json.dump(data, f)
