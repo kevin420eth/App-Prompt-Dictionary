@@ -113,7 +113,7 @@ def random_word():
         if user_input != '':
             break
 
-#Backup the current dictionary
+# Backup the current dictionary
 def backup():
     time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     try:
