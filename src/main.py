@@ -3,15 +3,15 @@ import os, json, random, datetime
 # Add a new word
 def add_new_word():
     new_word = input('Enter a vocabulary:\n').lower()
+    if new_word in data:
+        print(f"The word '{new_word}' has existed")
+        return
     meaning = input('Enter its meaning:\n').lower()
     synonyms = input('Enter its synonyms:\n').lower()
     word_type = input('Enter its type:\n').lower()
 
     timestamp = int(datetime.datetime.now().timestamp())
 
-    if new_word in data:
-        print(f"The word '{new_word}' has existed")
-        return
     with open(f'{root}/data/data.json', 'w', encoding='utf-8') as f:
         synonyms_list = []
         if synonyms != '':
