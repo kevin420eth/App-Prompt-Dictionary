@@ -103,11 +103,11 @@ def check_word():
 def random_word():
     while True:
         key = random.choice(list(data))
-        print(key)
-        user_input = input('\nClick Enter to show detail').lower()
+        print(f'\n{key}')
+        user_input = input('').lower()
         for _ in data[key]:
-            print(f'\n{_}: {data[key][_]}')
-        user_input = input('\nClick Enter to check next word\n').lower()
+            print(f'{_}: {data[key][_]}\n')
+        user_input = input(f'-----------------------------------').lower()
         if user_input != '':
             break
 
