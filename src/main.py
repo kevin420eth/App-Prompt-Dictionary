@@ -4,7 +4,7 @@ import os, json, random, datetime
 def add_new_word():
     new_word = input('\nEnter a vocabulary: ').lower()
     if new_word in data:
-        print(f"The word '{new_word}' has existed")
+        print(f"\nThe word '{new_word}' has existed")
         return
     meaning = input('\nEnter its meaning: ').lower()
     synonyms = input('\nEnter its synonyms: ').lower()
