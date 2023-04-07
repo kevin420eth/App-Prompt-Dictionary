@@ -131,7 +131,7 @@ if __name__ == "__main__":
     base = os.path.dirname(__file__)
     root = os.path.abspath(os.path.join(base, os.pardir))
 
-    with open(f'{root}/src/data.json','r') as f:
+    with open(f'{root}/data/data.json','r') as f:
         data = json.load(f)
     while True:
         print(f'\n-----------------------------------')
