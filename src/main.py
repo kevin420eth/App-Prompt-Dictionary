@@ -90,7 +90,7 @@ def add_new_synonyms():
 
 # Check a word
 def check_word():
-    target_word = input('Enter a word:\n')
+    target_word = input('Enter a word:\n').lower()
     try:
         for _ in data[target_word]:
             print(f'\n{_}: {data[target_word][_]}')
